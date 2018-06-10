@@ -39,37 +39,29 @@
 #include "stm32f1xx_hal_uart.h"
 #include "stm32f1xx_hal_tim.h"
 
-extern TIM_HandleTypeDef htim7;
 extern UART_HandleTypeDef huart1;
-extern uint32_t time_data;
+
 class STM32Hardware {
   protected:
-    TIM_HandleTypeDef *htim;
     UART_HandleTypeDef *huart;
 
-    const static uint16_t rbuflen = 128;
+    const static uint16_t rbuflen = 1024;
     uint8_t rbuf[rbuflen];
     uint32_t rind;
+
     inline uint32_t getRdmaInd(void){ return (rbuflen - huart->hdmarx->Instance->CNDTR) & (rbuflen - 1); }
 
-    //const static uint16_t tbuflen = 256;
     const static uint16_t tbuflen = 1024;
     uint8_t tbuf[tbuflen];
     uint32_t twind, tfind;
 
   public:
     STM32Hardware():
-      htim(&htim7), huart(&huart1), rind(0), twind(0), tfind(0){
+      huart(&huart1), rind(0), twind(0), tfind(0){
     }
 
-    STM32Hardware(TIM_HandleTypeDef *htim_, UART_HandleTypeDef *huart_):
-      htim(htim_), huart(huart_), rind(0), twind(0), tfind(0){
-    }
-  
     void init(){
       reset_rbuf();
-
-      HAL_TIM_Base_Start(htim);
     }
 
     void reset_rbuf(void){
@@ -118,7 +110,6 @@ class STM32Hardware {
     unsigned long time()
     {
     	return HAL_GetTick();
-    	//return time_data;
     }
 
   protected:
