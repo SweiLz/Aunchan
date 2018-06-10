@@ -69,6 +69,7 @@ static void MX_USART1_UART_Init(void);
 #else
 #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
 #endif /* __GNUC__ */
+
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -120,7 +121,6 @@ int main(void)
 
   /* USER CODE BEGIN 3 */
 	  loop();
-
   }
   /* USER CODE END 3 */
 

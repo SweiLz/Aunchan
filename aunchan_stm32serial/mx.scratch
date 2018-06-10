@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
-<ProjectName>C:\Users\PRUEK\Documents\Aunchan\Aunchan\Aunchan_ROSSerial\\Aunchan_ROSSerial</ProjectName>
+<ProjectName>C:\Users\PRUEK\Documents\Aunchan\Aunchan\aunchan_stm32serial\\aunchan_stm32serial</ProjectName>
 <ProjectNature>C</ProjectNature> 
 <CMSIS>..\Drivers\CMSIS</CMSIS>
 <HAL_Driver>C:\Users\PRUEK\STM32Cube\Repository\STM32Cube_FW_F1_V1.6.1\Drivers\CMSIS</HAL_Driver>
@@ -22,7 +22,7 @@
 
 <configs>
   <config>
-    <name>Aunchan_ROSSerial</name>				
+    <name>aunchan_stm32serial</name>				
     <device>STM32F103RCTx</device>		 
     <heapSize>0x200</heapSize>
     <stackSize>0x400</stackSize>
@@ -32,7 +32,7 @@
     <usedDebug>true</usedDebug>
     	<debugprobe>swd</debugprobe>
     <optimization>6</optimization>
-    <icfloc>0</icfloc>
+    <icfloc>1</icfloc>
     <Adefines>
         <define></define>
     </Adefines>   
