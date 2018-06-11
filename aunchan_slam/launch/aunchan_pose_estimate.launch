@@ -1,0 +1,7 @@
+<launch>
+    
+    <node pkg="hector_pose_estimation" type="pose_estimation" name="hector_pose_estimation"  output="screen"/>
+<node pkg="tf" type="static_transform_publisher" name="nav_to_map"
+        args="0.0 0.0 0.08 0.0 0.0 0.0 nav map 64"/>
+    
+</launch>

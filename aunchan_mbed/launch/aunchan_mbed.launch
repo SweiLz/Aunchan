@@ -1,0 +1,10 @@
+<launch>
+    <arg name="usbport" default="/dev/ttyUSB0"/>
+    <arg name="usbbaud" default="250000"/>
+    <!-- <arg name="imu_topic" default="/imu/data_raw"/> -->
+    <node name="serial_node" pkg="rosserial_python" type="serial_node.py" output="screen">
+        <!-- <remap from="attitude" to="$(arg imu_topic)"/> -->
+        <param name="port" value="$(arg usbport)"/>
+        <param name="baud" value="$(arg usbbaud)"/>
+    </node>
+</launch>
