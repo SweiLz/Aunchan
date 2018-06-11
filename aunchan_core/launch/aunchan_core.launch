@@ -23,7 +23,6 @@
     <include file="$(find aunchan_mbed)/launch/aunchan_mbed.launch">
         <arg name="usbport" value="/dev/ttyUSB1"/>
         <arg name="usbbaud" value="250000"/>
-        <!-- <arg name="imu_topic" value="/imu/data_raw"/> -->
     </include>
 
     
