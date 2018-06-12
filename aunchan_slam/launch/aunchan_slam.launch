@@ -1,0 +1,11 @@
+<launch>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find aunchan_slam)/cfg/aunchan_slam.rviz" />
+    <include file="$(find aunchan_teleop)/launch/aunchan_teleop_joy.launch"/>
+
+    <include file="$(find aunchan_slam)/launch/aunchan_mapping.launch">
+        <!-- <arg name="odom_frame" default="odom"/> -->
+    </include>
+    <!-- <include file="$(find aunchan_slam)/launch/aunchan_pose_estimate.launch"/> -->
+
+
+</launch>
