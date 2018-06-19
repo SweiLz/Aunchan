@@ -18,6 +18,7 @@ void imuCB(const sensor_msgs::Imu& imu_msg)
     tf::quaternionMsgToTF(imu_msg.orientation, tmp_);
     tfScalar yaw, pitch, roll;
     tf::Matrix3x3(tmp_).getRPY(roll,pitch,yaw);
+    ROS_INFO("YAW=%f",yaw);
     tmp_.setRPY(roll,pitch,0.0);
     transform_.setRotation(tmp_);
     transform_.stamp_ = imu_msg.header.stamp;

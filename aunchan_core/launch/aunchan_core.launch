@@ -1,29 +1,30 @@
 <launch>
-    
-    <include file="$(find ydlidar)/launch/lidar.launch">
-        <arg name="lidarport" default="/dev/ttyUSB0"/>
-	    <arg name="lidarbaud" default="128000"/>
+    <include file="$(find aunchan_mbed)/launch/aunchan_mbed.launch">
+        <!-- <arg name="imu_topic" value="imu/data"/> -->
+        <arg name="port" value="/dev/ttyUSB1"/>
+        <arg name="baud" value="250000"/>
     </include>
-    <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser"
-        args="-0.02 0.0 0.1 0.0 0.0 0.0 base_link laser 64" />
-    
-    <node pkg="tf" type="static_transform_publisher" name="base_link_to_imu"
-        args="0.025 -0.07 0.012 -1.57079632679 0.0 0.0 base_link imu_frame 64"/>
-
+    <include file="$(find ydlidar)/launch/lidar.launch">
+        <arg name="port" default="/dev/ttyUSB0"/>
+	    <arg name="baudrate" default="128000"/>
+    </include>
     <node pkg="aunchan_core" type="imu_attitude_to_tf" name="imu_attitude_to_tf">
         <remap from="imu_topic" to="attitude" />
         <param name="base_stabilized_frame" type="string" value="base_stabilized" />
         <param name="base_frame" type="string" value="base_link" />
     </node>
 
-    <node pkg="tf" type="static_transform_publisher" name="base_stabilized_to_base_footprint"
-        args="0.0 0.0 0.082 0.0 0.0 0.0 base_footprint base_stabilized 64"/>
+    <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser"
+        args="-0.02 0.0 0.1 0.0 0.0 0.0 base_link laser 100"/>
+    
+    <node pkg="tf" type="static_transform_publisher" name="base_link_to_imu"
+        args="-0.02 -0.02 0.01 0.0 0.0 0.0 base_link imu_frame 100"/>
 
-    <node pkg="aunchan_mbed" type="robot_publish_odom" name="robot_publish_odom"/>
+    <!--<node pkg="tf" type="static_transform_publisher" name="base_stabilized_to_base_footprint"
+        args="0.0 0.0 0.082 0.0 0.0 0.0 base_footprint base_stabilized 64"/> -->
 
-    <include file="$(find aunchan_mbed)/launch/aunchan_mbed.launch">
-        <arg name="usbport" value="/dev/ttyUSB1"/>
-        <arg name="usbbaud" value="250000"/>
-    </include>
+    <!-- <node pkg="aunchan_mbed" type="robot_publish_odom" name="robot_publish_odom"/> -->
+
+    
     
 </launch>

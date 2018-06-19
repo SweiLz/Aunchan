@@ -12,13 +12,13 @@
         <param name="map_start_x" value="0.5"/>
         <param name="map_start_y" value="0.5"/>
 
-        <param name="map_update_distance_thresh" value="0.02"/>
-        <param name="map_update_angle_thresh" value="0.01"/>
-        <param name="map_pub_period" value=""/>
+        <param name="map_update_distance_thresh" value="0.2"/>
+        <param name="map_update_angle_thresh" value="0.1"/>
+        <param name="map_pub_period" value="2"/>
         <param name="map_multi_res_levels" value="2"/>
 
         <param name="update_factor_free" value="0.45"/>
-        <param name="update_factor_occupied" value="0.9"/>
+        <param name="update_factor_occupied" value="0.75"/>
 
         <param name="laser_min_dist" value="0.15"/>
         <param name="laser_max_dist" value="4.0"/>
@@ -38,5 +38,5 @@
         <param name="map_with_known_poses" value="false"/>
     </node>
 
-     <!-- <include file="$(find hector_geotiff)/launch/geotiff_mapper.launch"/>  -->
+     <include file="$(find hector_geotiff)/launch/geotiff_mapper.launch"/> 
 </launch>
