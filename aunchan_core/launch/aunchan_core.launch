@@ -14,14 +14,14 @@
         <param name="base_frame" type="string" value="base_link" />
     </node> -->
 
-    <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser"
+    <!-- <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser"
         args="-0.02 0.0 0.1 0.0 0.0 0.0 base_link laser 100"/>
     
     <node pkg="tf" type="static_transform_publisher" name="base_link_to_imu"
         args="-0.02 -0.02 0.01 0.0 0.0 0.0 base_link imu_frame 100"/>
 
     <node pkg="tf" type="static_transform_publisher" name="base_stabilized_to_base_footprint"
-        args="0.0 0.0 0.082 0.0 0.0 0.0 base_footprint base_stabilized 100"/>
+        args="0.0 0.0 0.082 0.0 0.0 0.0 base_footprint base_stabilized 100"/> -->
 
     <!-- <node pkg="aunchan_mbed" type="robot_publish_odom" name="robot_publish_odom"/> -->
 
