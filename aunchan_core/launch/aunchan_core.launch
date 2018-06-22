@@ -1,11 +1,11 @@
 <launch>
     <include file="$(find aunchan_mbed)/launch/aunchan_mbed.launch">
         <!-- <arg name="imu_topic" value="imu/data"/> -->
-        <arg name="port" value="/dev/ttyUSB1"/>
+        <arg name="port" value="/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0"/>
         <arg name="baud" value="250000"/>
     </include>
     <include file="$(find ydlidar)/launch/lidar.launch">
-        <arg name="port" default="/dev/ttyUSB0"/>
+        <arg name="port" default="/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0"/>
 	    <arg name="baudrate" default="128000"/>
     </include>
     <!-- <node pkg="aunchan_core" type="imu_attitude_to_tf" name="imu_attitude_to_tf">
