@@ -1,0 +1,13 @@
+<launch>
+    <!-- Move base -->
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        <!-- <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" /> -->
+        <rosparam file="$(find aunchan_navigation)/cfg/movebase/costmap_common.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find aunchan_navigation)/cfg/movebase/costmap_common.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find aunchan_navigation)/cfg/movebase/local_costmap.yaml" command="load" />
+        <rosparam file="$(find aunchan_navigation)/cfg/movebase/global_costmap.yaml" command="load" />
+        <rosparam file="$(find aunchan_navigation)/cfg/movebase/move_base.yaml" command="load" />
+        <!-- <rosparam file="$(find aunchan_navigation)/cfg/movebase/dwa_local_planner.yaml" command="load" /> -->
+        <rosparam file="$(find aunchan_navigation)/cfg/movebase/base_local_planner.yaml" command="load" />
+    </node>
+</launch>

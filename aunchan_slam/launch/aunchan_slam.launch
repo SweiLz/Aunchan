@@ -1,22 +1,32 @@
 <launch>
+     <!-- <include file="$(find aunchan_core)/launch/aunchan_imu.launch"/> -->
     <!-- Arguments -->
     <arg name="slam_methods" default="hector" doc="slam type [gmapping, cartographer, hector, karto, frontier_exploration]"/>
     <arg name="open_rviz" default="true"/>
     <arg name="odom_from_cmdvel" default="false"/>
-
+    <arg name="use_joy_teleop" default="false"/>
+    
+    <!-- Odom from cmd_vel -->
     <group if="$(arg odom_from_cmdvel)">
         <node pkg="aunchan_mbed" type="robot_publish_odom" name="robot_publish_odom"/>
     </group>
+
     <!-- <include file="$(find aunchan_slam)/launch/aunchan_pose_estimate.launch"/> -->
     <!-- <node pkg="tf" type="static_transform_publisher" name="odom_to_map"
         args="0.0 0.0 0.0 0.0 0.0 0.0 odom base_ 64"/> -->
+
+
     <!-- AUNCHAN -->
-    <!-- <include file="$(find aunchan_teleop)/launch/aunchan_teleop_joy.launch"/> -->
+    <group if="$(arg odom_from_cmdvel)">
+        <include file="$(find aunchan_teleop)/launch/aunchan_teleop_joy.launch"/>
+    </group>
+    
+    
     <!-- rviz -->
     <group if="$(arg open_rviz)">
-        <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find aunchan_slam)/cfg/aunchan_$(arg slam_methods).rviz"/>
+        <node name="rviz" pkg="rviz" type="rviz" required="true"
+              args="-d $(find aunchan_slam)/cfg/aunchan_$(arg slam_methods).rviz"/>
     </group>
-
     
     <!-- SLAM: Gmapping, Cartographer, Hector, Karto, Frontier_exploration-->
     <include file="$(find aunchan_slam)/launch/aunchan_$(arg slam_methods).launch"/>

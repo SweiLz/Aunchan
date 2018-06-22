@@ -4,6 +4,7 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /LaserScan1
         - /TF1
         - /TF1/Frames1
       Splitter Ratio: 0.594406008720398
@@ -89,7 +90,7 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.014999999664723873
+      Size (m): 0.05000000074505806
       Style: Flat Squares
       Topic: /scan
       Unreliable: false
@@ -183,7 +184,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 5.23683500289917
+      Distance: 19.09671974182129
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -198,10 +199,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.3597965240478516
+      Pitch: 1.2347966432571411
       Target Frame: map
       Value: Orbit (rviz)
-      Yaw: 4.239982604980469
+      Yaw: 4.864991188049316
     Saved: ~
 Window Geometry:
   Displays:

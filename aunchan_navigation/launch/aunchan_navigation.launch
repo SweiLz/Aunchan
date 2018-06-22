@@ -1,0 +1,22 @@
+<launch>
+    <arg name="map_file" default="$(find aunchan_navigation)/maps/diolo3.yaml"/>
+    <arg name="open_rviz" default="false"/>
+    
+    
+    <!-- Map server -->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+
+    <!-- Localization -->
+    <include file="$(find aunchan_navigation)/launch/aunchan_amcl.launch"/>
+    
+    <!-- Move base -->
+    <include file="$(find aunchan_navigation)/launch/aunchan_movebase.launch"/>
+
+    <!-- rviz -->
+    <group if="$(arg open_rviz)">
+        <node name="rviz" pkg="rviz" type="rviz" required="true"
+              args="-d $(find aunchan_navigation)/cfg/aunchan_nav.rviz"/>
+    </group>
+    
+
+</launch>
