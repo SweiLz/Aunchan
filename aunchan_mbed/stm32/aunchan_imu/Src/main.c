@@ -41,7 +41,8 @@
 #include "stm32f1xx_hal.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "mpu6050.h"
+#include "mainpp.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -65,7 +66,13 @@ static void MX_I2C1_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-
+#ifdef __GNUC__
+/* With GCC, small printf (option LD Linker->Libraries->Small printf
+   set to 'Yes') calls __io_putchar() */
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#else
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif /* __GNUC__ */
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -105,6 +112,8 @@ int main(void)
   MX_USART1_UART_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
+  Imu mpu6050;
+  mpu6050_init();
 
   /* USER CODE END 2 */
 
@@ -116,6 +125,18 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
+	  mpu6050_read(mpu6050.gyro, mpu6050.accel, mpu6050.quat);
+	  mpu6050.gyro[0] = (mpu6050.gyro[0] * PI)/180;
+	  mpu6050.gyro[1] = (mpu6050.gyro[1] * PI)/180;
+	  mpu6050.gyro[2] = (mpu6050.gyro[2] * PI)/180;
+	  mpu6050.accel[0] = mpu6050.accel[0] * 9.80665;
+	  mpu6050.accel[1] = mpu6050.accel[1] * 9.80665;
+	  mpu6050.accel[2] = mpu6050.accel[2] * 9.80665;
+	  imu2ros(mpu6050);
+	  //printf("Quat :: W = %f X = %f Y = %f Z = %f ",mpu6050.gyro[0], mpu6050.gyro[1], mpu6050.gyro[2], mpu6050.gyro[3]);
+	  //printf("Accel:: X = %f Y = %f Z = %f ",mpu6050.accel[0],mpu6050.accel[1],mpu6050.accel[2]);
+	  //printf("Gyro :: X = %f Y = %f Z = %f\r\n",mpu6050.gyro[0],mpu6050.gyro[1],mpu6050.gyro[2]);
+	  HAL_Delay(50);
 
   }
   /* USER CODE END 3 */
@@ -247,7 +268,14 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+PUTCHAR_PROTOTYPE
+{
+  /* Place your implementation of fputc here */
+  /* e.g. write a character to the USART1 and Loop until the end of transmission */
+  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xFFFF);
 
+  return ch;
+}
 /* USER CODE END 4 */
 
 /**
