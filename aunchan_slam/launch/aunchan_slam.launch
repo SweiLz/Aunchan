@@ -1,13 +1,15 @@
 <launch>
-
     <!-- Arguments -->
     <arg name="slam_methods" default="hector" doc="slam type [gmapping, cartographer, hector, karto, frontier_exploration]"/>
     <arg name="open_rviz" default="true"/>
-    <arg name="odom_from_cmdvel" default="true"/>
+    <arg name="odom_from_cmdvel" default="false"/>
 
+    <group if="$(arg odom_from_cmdvel)">
+        <node pkg="aunchan_mbed" type="robot_publish_odom" name="robot_publish_odom"/>
+    </group>
     <!-- <include file="$(find aunchan_slam)/launch/aunchan_pose_estimate.launch"/> -->
-    <node pkg="tf" type="static_transform_publisher" name="odom_to_map"
-        args="0.0 0.0 0.0 0.0 0.0 0.0 odom base_ 64"/>
+    <!-- <node pkg="tf" type="static_transform_publisher" name="odom_to_map"
+        args="0.0 0.0 0.0 0.0 0.0 0.0 odom base_ 64"/> -->
     <!-- AUNCHAN -->
     <!-- <include file="$(find aunchan_teleop)/launch/aunchan_teleop_joy.launch"/> -->
     <!-- rviz -->
@@ -16,7 +18,6 @@
     </group>
 
     
-
     <!-- SLAM: Gmapping, Cartographer, Hector, Karto, Frontier_exploration-->
     <include file="$(find aunchan_slam)/launch/aunchan_$(arg slam_methods).launch"/>
 

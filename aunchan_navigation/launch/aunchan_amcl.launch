@@ -2,7 +2,7 @@
     <node pkg="rviz" type="rviz" name="rviz" args="-d $(find aunchan_navigation)/cfg/aunchan_nav.rviz"/>
 
     <!-- Map server -->
-    <arg name="map_file" default="$(find aunchan_navigation)/maps/test_map.yaml"/>
+    <arg name="map_file" default="$(find aunchan_navigation)/maps/cb4_hall3.yaml"/>
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
 
     <!-- Localization -->

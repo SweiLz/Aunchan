@@ -4,6 +4,7 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /TF1
         - /TF1/Frames1
       Splitter Ratio: 0.594406008720398
     Tree Height: 835
@@ -134,22 +135,25 @@ Visualization Manager:
           Value: false
         map:
           Value: true
+        odom:
+          Value: true
         scanmatcher_frame:
           Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
-      Show Names: false
+      Show Names: true
       Tree:
         map:
-          base_footprint:
-            base_stabilized:
-              base_link:
-                imu_frame:
-                  {}
-                laser:
-                  {}
+          odom:
+            base_footprint:
+              base_stabilized:
+                base_link:
+                  imu_frame:
+                    {}
+                  laser:
+                    {}
           scanmatcher_frame:
             {}
       Update Interval: 0
@@ -179,25 +183,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.727475643157959
+      Distance: 5.23683500289917
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.31540870666503906
-        Y: -0.0033761595841497183
-        Z: -9.1552734375e-5
+        X: 1.5310980081558228
+        Y: -0.6783914566040039
+        Z: -0.01035307440906763
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.1547967195510864
+      Pitch: 1.3597965240478516
       Target Frame: map
       Value: Orbit (rviz)
-      Yaw: 3.2299768924713135
+      Yaw: 4.239982604980469
     Saved: ~
 Window Geometry:
   Displays:

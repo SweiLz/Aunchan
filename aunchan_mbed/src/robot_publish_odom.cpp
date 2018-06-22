@@ -10,6 +10,8 @@ double th = 0.0;
 double vx = 0.0;
 double vy = 0.0;
 double vth = 0.0;
+ros::Time current_time, last_time;
+
 
 void cmd_velCB(const geometry_msgs::Twist& msg)
 {
@@ -29,9 +31,7 @@ int main(int argc, char *argv[])
     ros::Publisher odom_pub = n.advertise<nav_msgs::Odometry>("odom", 50);
     tf::TransformBroadcaster odom_broadcaster;
 
-    
 
-    ros::Time current_time, last_time;
     current_time = ros::Time::now();
     last_time = ros::Time::now();
 

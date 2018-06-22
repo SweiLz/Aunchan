@@ -1,7 +1,7 @@
 <launch>
 	<arg name="port" default="/dev/ttyUSB0"/>
 	<arg name="baudrate" default="128000"/>
-  	<node name="ydlidar_node"  pkg="ydlidar"  type="ydlidar_node" output="screen">
+  	<node name="aunchan_ydlidar"  pkg="ydlidar"  type="ydlidar_node" output="screen">
     	<param name="port"         type="string" value="$(arg port)"/>
  	  	<param name="baudrate"     type="int"    value="$(arg baudrate)"/>
 
