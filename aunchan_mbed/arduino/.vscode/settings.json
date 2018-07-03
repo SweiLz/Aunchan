@@ -1,0 +1,10 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/sweilz/catkin_ws/devel/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages"
+    ],
+    "terminal.integrated.env.linux": {
+        "PATH": "/home/sweilz/.platformio/penv/bin:/home/sweilz/.platformio/penv:/home/sweilz/.local/bin:/opt/ros/melodic/bin:/home/sweilz/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin",
+        "PLATFORMIO_CALLER": "vscode"
+    }
+}
